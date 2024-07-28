@@ -1,6 +1,10 @@
 FROM ubuntu
-RUN apt-get update
-RUN apt-get install nginx
-CMD ["nginx","-g","deamon:off"]
 
+RUN apt-get update && \ 
+    apt-get clean && \ 
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get install -y nginx
+
+CMD ["nginx", "-g", "daemon off;"]
 
